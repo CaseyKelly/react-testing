@@ -3,7 +3,7 @@ import CommentBox from "../../src/components/comment_box";
 
 describe("CommentBox", () => {
   let component;
-  
+
   beforeEach(() => {
     component = renderComponent(CommentBox);
   });
@@ -18,5 +18,20 @@ describe("CommentBox", () => {
 
   it("has a button", () => {
     expect(component.find("button")).to.exist;
+  });
+
+  describe("entering some text", () => {
+    let textarea;
+
+    beforeEach(() => {
+      textarea = component.find("textarea");
+      textarea.simulate("change", "new comment");
+    });
+
+    it("shows that text in text area", () => {
+      expect(textarea).to.have.value("new comment");
+    });
+
+    it("when submitted, clears the input", () => {});
   });
 });
