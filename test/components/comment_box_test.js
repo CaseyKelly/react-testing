@@ -8,8 +8,8 @@ describe("CommentBox", () => {
 
   beforeEach(() => {
     component = renderComponent(CommentBox);
-    textarea = component.find("textarea")
-    button = component.find("button")
+    textarea = component.find("textarea");
+    button = component.find("button");
   });
 
   it("has the correct class", () => {
@@ -25,7 +25,6 @@ describe("CommentBox", () => {
   });
 
   describe("entering some text", () => {
-
     beforeEach(() => {
       textarea.simulate("change", "new comment");
     });
@@ -34,6 +33,9 @@ describe("CommentBox", () => {
       expect(textarea).to.have.value("new comment");
     });
 
-    it("when submitted, clears the input", () => {});
+    it("when submitted, clears the input", () => {
+      component.simulate("submit");
+      expect(textarea).to.have.value("");
+    });
   });
 });
