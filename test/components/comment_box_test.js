@@ -3,9 +3,13 @@ import CommentBox from "../../src/components/comment_box";
 
 describe("CommentBox", () => {
   let component;
+  let textarea;
+  let button;
 
   beforeEach(() => {
     component = renderComponent(CommentBox);
+    textarea = component.find("textarea")
+    button = component.find("button")
   });
 
   it("has the correct class", () => {
@@ -13,18 +17,16 @@ describe("CommentBox", () => {
   });
 
   it("has a text area", () => {
-    expect(component.find("textarea")).to.exist;
+    expect(textarea).to.exist;
   });
 
   it("has a button", () => {
-    expect(component.find("button")).to.exist;
+    expect(button).to.exist;
   });
 
   describe("entering some text", () => {
-    let textarea;
 
     beforeEach(() => {
-      textarea = component.find("textarea");
       textarea.simulate("change", "new comment");
     });
 
